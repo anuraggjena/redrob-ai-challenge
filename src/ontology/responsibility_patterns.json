@@ -1,0 +1,34 @@
+{
+  "ranking_evidence": [
+    "ranking pipeline",
+    "learning-to-rank",
+    "ndcg",
+    "search relevance",
+    "re-rank",
+    "rerank"
+  ],
+  "retrieval_evidence": [
+    "vector search",
+    "embedding index",
+    "retrieval system",
+    "faiss",
+    "hybrid search",
+    "semantic search"
+  ],
+  "production_evidence": [
+    "production deployment",
+    "serving",
+    "a/b test",
+    "online evaluation",
+    "millions of users",
+    "at scale"
+  ],
+  "eval_evidence": [
+    "offline evaluation",
+    "ndcg",
+    "mrr",
+    "map",
+    "benchmark",
+    "eval framework"
+  ]
+}

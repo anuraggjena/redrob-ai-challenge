@@ -1,0 +1,9 @@
+{
+  "candidate_hash": "31662b5c93249908bc9a8d02e91e0d077ce9a98f206b614e561ead1bf5b82bc8",
+  "candidate_count": 100000,
+  "chunk_size": 5000,
+  "completed_chunks": [
+    0,
+    1
+  ]
+}

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+data/candidates.jsonl
+artifacts/*.npy
+artifacts/*.index
+artifacts/*.parquet
+artifacts/*.lgb
+eval/reports/*.json
+*.egg-info/

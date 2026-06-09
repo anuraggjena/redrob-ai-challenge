@@ -1,0 +1,78 @@
+# Redrob Hackathon — Submission Metadata
+#
+# Fill in team details before portal upload.
+# Stage 3 review uses this file to verify portal metadata.
+
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "your-team-name-here"
+
+primary_contact:
+  name: "Full Name"
+  email: "primary@example.com"
+  phone: "+91-XXXXXXXXXX"
+
+team_members:
+  - name: "Member 1 Full Name"
+    email: "member1@example.com"
+    role: "ML Engineer"
+  - name: "Member 2 Full Name"
+    email: "member2@example.com"
+    role: "Data Engineer"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/YOUR_USERNAME/YOUR_REPO"
+
+sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker"
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "your-platform-here"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.11.x"
+  os: "your-os-here"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: true
+  pre_computation_time_minutes: 45
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+ai_tools_used:
+  - "Claude"
+  - "Cursor"
+
+ai_usage_summary: |
+  Describe how AI tools were used in development. Example:
+  Used Claude and Cursor for architecture discussion, code review, and refactoring.
+  No candidate data was fed to any LLM.
+
+# ============================================================================
+# Approach summary (optional but recommended)
+# ============================================================================
+methodology_summary: |
+  Eight-stage ranking pipeline: CandidateProfile parsing, 120+ feature extraction,
+  BM25+FAISS hybrid retrieval, weighted ensemble scoring with hard gates, seven-detector
+  honeypot engine, LightGBM LambdaMART re-rank on top ~2K, evidence-graph template
+  reasoning, and CSV submission. Offline pre-compute builds embeddings, indexes, features,
+  synthetic labels, and LTR model. Runtime ranking completes in under 5 minutes on CPU
+  with 16 GB RAM and no network access.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: false
+  reproduction_tested: false

@@ -1,0 +1,37 @@
+{
+  "sample_n": 200,
+  "per_candidate_ms": {
+    "orjson_parse": 0.06279000000176893,
+    "parse_candidate": 0.024655000006532646,
+    "enrich_total": 108.93248999999741,
+    "honeypot": 1.103697499993359,
+    "evidence_graph": 6074.990397499996,
+    "full_process_profile": 42526.29188150001
+  },
+  "enrich_stages_ms_per_cand": {
+    "enrich_experience": 15.484085500002038,
+    "enrich_career": 1.4358519999950659,
+    "validate_timeline": 6.764688499997646,
+    "enrich_technical": 16.077392500001224,
+    "enrich_behavioral": 0.5221900000015012,
+    "enrich_availability": 68.64828149999994
+  },
+  "feature_groups_ms_per_cand": {
+    "experience_features": 0.004449999996722909,
+    "career_features": 1.5937084999950457,
+    "technical_features": 10.61514700000771,
+    "behavioral_features": 0.008771000002525398,
+    "availability_features": 16.01148749999993,
+    "trust_features": 2.8230299999995623,
+    "semantic_features": 0.0015589999929943588,
+    "graph_features": 1635.1113420000004,
+    "recruiter_intelligence": 0.35509950000232493,
+    "interaction_features": 0.4543145000025106
+  },
+  "parallel_overhead_50": {
+    "sequential_sec": 70.80486609999934,
+    "parallel_4_workers_sec": 23.68816390000211
+  },
+  "estimate_100k_hours": 1181.2858855972224,
+  "estimate_100k_hours_parallel_4": 295.3214713993056
+}

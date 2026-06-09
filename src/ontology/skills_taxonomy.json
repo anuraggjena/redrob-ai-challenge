@@ -1,0 +1,51 @@
+{
+  "retrieval_ranking": [
+    "retrieval",
+    "ranking",
+    "search",
+    "faiss",
+    "elasticsearch",
+    "opensearch",
+    "bm25",
+    "learning-to-rank",
+    "ndcg",
+    "mrr",
+    "map",
+    "reciprocal rank fusion",
+    "vector database",
+    "pinecone",
+    "weaviate",
+    "qdrant",
+    "milvus",
+    "hybrid search",
+    "dense retrieval"
+  ],
+  "embeddings_nlp": [
+    "embeddings",
+    "sentence-transformers",
+    "bge",
+    "e5",
+    "nlp",
+    "rag",
+    "llm",
+    "fine-tuning llms",
+    "lora",
+    "qlora",
+    "peft"
+  ],
+  "production_ml": [
+    "mlflow",
+    "kubeflow",
+    "bentoml",
+    "model serving",
+    "a/b test",
+    "production",
+    "deployment",
+    "ml platform"
+  ],
+  "negative_only": [
+    "langchain",
+    "photoshop",
+    "tailwind"
+  ]
+}

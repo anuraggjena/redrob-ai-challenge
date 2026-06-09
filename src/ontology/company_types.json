@@ -1,0 +1,19 @@
+{
+  "consulting": [
+    "TCS",
+    "Infosys",
+    "Wipro",
+    "Accenture",
+    "Cognizant",
+    "Capgemini",
+    "Mindtree",
+    "HCL",
+    "Tech Mahindra"
+  ],
+  "product_indicators": [
+    "product",
+    "platform",
+    "startup",
+    "series"
+  ]
+}

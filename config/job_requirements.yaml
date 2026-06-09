@@ -1,0 +1,93 @@
+role_title: "Senior AI Engineer — Founding Team"
+experience_range: [5, 9]
+
+required_skills:
+  - embeddings
+  - retrieval
+  - ranking
+  - search systems
+  - vector databases
+  - python
+  - evaluation frameworks
+  - ndcg
+  - map
+  - mrr
+  - production ai systems
+  - faiss
+  - elasticsearch
+  - opensearch
+  - pinecone
+  - weaviate
+  - qdrant
+  - milvus
+
+desired_skills:
+  - lora
+  - qlora
+  - peft
+  - learning-to-rank
+  - hr tech
+  - marketplace
+  - distributed systems
+
+positive_signals:
+  - recommendation systems
+  - search systems
+  - ranking systems
+  - retrieval systems
+  - ai infrastructure
+  - ml platforms
+  - production deployment
+  - product company
+  - sentence-transformers
+  - hybrid search
+  - a/b test
+
+negative_signals:
+  - langchain only
+  - prompt engineering only
+  - pure research
+  - computer vision only
+  - speech only
+  - robotics only
+  - keyword stuffing
+
+negative_titles:
+  - HR Manager
+  - Marketing Manager
+  - Accountant
+  - Content Writer
+  - Graphic Designer
+  - Sales Executive
+  - Customer Support
+  - Civil Engineer
+  - Mechanical Engineer
+  - Project Manager
+  - Business Analyst
+  - Operations Manager
+
+consulting_companies:
+  - TCS
+  - Tata Consultancy Services
+  - Infosys
+  - Wipro
+  - Accenture
+  - Cognizant
+  - Capgemini
+  - Mindtree
+  - HCL
+  - Tech Mahindra
+
+location_preferred:
+  - Pune
+  - Noida
+  - Bangalore
+  - Bengaluru
+  - Mumbai
+  - Delhi
+  - Hyderabad
+  - Gurgaon
+  - Gurugram
+
+notice_period_ideal_days: 30
+notice_period_max_acceptable_days: 90
