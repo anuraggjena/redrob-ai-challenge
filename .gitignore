@@ -4,6 +4,8 @@ __pycache__/
 .venv/
 venv/
 data/candidates.jsonl
+India_runs_data_and_ai_challenge/candidates.jsonl
+India_runs_data_and_ai_challenge/_extracted_docs.txt
 artifacts/*.npy
 artifacts/*.index
 artifacts/*.parquet
