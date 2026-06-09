@@ -1,15 +1,14 @@
 from __future__ import annotations
 
-import json
-from pathlib import Path
+from functools import lru_cache
 
+from src.ontology.loader import load_ontology_json
 from src.understanding.models import CandidateProfile
 
-ONTOLOGY_DIR = Path(__file__).resolve().parent.parent / "ontology"
 
-
+@lru_cache(maxsize=1)
 def _load_title_classifier() -> dict:
-    return json.loads((ONTOLOGY_DIR / "title_classifier.json").read_text(encoding="utf-8"))
+    return load_ontology_json("title_classifier.json")
 
 
 def _is_non_technical_title(title: str, non_technical_titles: list[str]) -> bool:

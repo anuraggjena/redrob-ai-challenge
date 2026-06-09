@@ -1,9 +1,8 @@
 from __future__ import annotations
 
-import json
-from pathlib import Path
+from functools import lru_cache
 
-ONTOLOGY_DIR = Path(__file__).resolve().parent.parent / "ontology"
+from src.ontology.loader import load_ontology_json
 
 HIGH_HONEYPOT_THRESHOLD = 0.6
 TIMELINE_HONEYPOT_THRESHOLD = 0.4
@@ -12,9 +11,10 @@ LOW_RESPONSE_THRESHOLD = 0.1
 RECRUITER_SAVE_THRESHOLD = 0.3
 
 
-def _load_non_technical_titles() -> list[str]:
-    data = json.loads((ONTOLOGY_DIR / "title_classifier.json").read_text(encoding="utf-8"))
-    return [title.lower() for title in data.get("non_technical", [])]
+@lru_cache(maxsize=1)
+def _load_non_technical_titles() -> tuple[str, ...]:
+    data = load_ontology_json("title_classifier.json")
+    return tuple(title.lower() for title in data.get("non_technical", []))
 
 
 def _is_non_technical_title(title: str) -> bool:

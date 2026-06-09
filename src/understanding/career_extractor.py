@@ -1,18 +1,10 @@
 from __future__ import annotations
 
-import json
-from pathlib import Path
-
+from src.ontology.loader import load_ontology_json
 from src.understanding.models import CandidateProfile
-
-ONTOLOGY_DIR = Path(__file__).resolve().parent.parent / "ontology"
 
 JUNIOR_KEYWORDS = ("junior", "associate", "intern", "entry", "graduate", "trainee")
 SENIOR_KEYWORDS = ("senior", "staff", "principal", "lead", "head", "director", "vp", "chief")
-
-
-def _load_json(name: str) -> dict:
-    return json.loads((ONTOLOGY_DIR / name).read_text(encoding="utf-8"))
 
 
 def _is_consulting_company(company: str, consulting_list: list[str]) -> bool:
@@ -33,7 +25,7 @@ def _title_level(title: str) -> float:
 
 
 def enrich_career(profile: CandidateProfile) -> None:
-    company_types = _load_json("company_types.json")
+    company_types = load_ontology_json("company_types.json")
     consulting = company_types.get("consulting", [])
     roles = profile.career_roles
 

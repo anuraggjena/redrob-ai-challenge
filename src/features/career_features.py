@@ -1,11 +1,9 @@
 from __future__ import annotations
 
-import json
-from pathlib import Path
+from functools import lru_cache
 
+from src.ontology.loader import load_ontology_json
 from src.understanding.models import CandidateProfile
-
-ONTOLOGY_DIR = Path(__file__).resolve().parent.parent / "ontology"
 
 JUNIOR_KEYWORDS = ("junior", "associate", "intern", "entry", "graduate", "trainee")
 SENIOR_KEYWORDS = ("senior", "staff", "principal", "lead", "head", "director", "vp", "chief")
@@ -22,9 +20,10 @@ COMPANY_SIZE_SCORES = {
 }
 
 
-def _load_consulting() -> list[str]:
-    data = json.loads((ONTOLOGY_DIR / "company_types.json").read_text(encoding="utf-8"))
-    return data.get("consulting", [])
+@lru_cache(maxsize=1)
+def _load_consulting() -> tuple[str, ...]:
+    data = load_ontology_json("company_types.json")
+    return tuple(data.get("consulting", []))
 
 
 def _is_consulting(company: str, consulting: list[str]) -> bool:

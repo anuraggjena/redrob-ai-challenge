@@ -1,0 +1,23 @@
+{
+  "feature_fingerprint_first_5": "9e8c3608fdc70fe0f433733b6cb8ec66f2d2617d91b8b7d5eeaf10b759d5802e",
+  "benchmarks": [
+    {
+      "n": 200,
+      "elapsed_sec": 0.207,
+      "ms_per_candidate": 1.034,
+      "candidates_per_sec": 966.806,
+      "estimated_100k_hours_sequential": 0.03,
+      "estimated_100k_hours_n_jobs_2": 0.01,
+      "estimated_100k_hours_n_jobs_4": 0.01
+    },
+    {
+      "n": 1000,
+      "elapsed_sec": 1.017,
+      "ms_per_candidate": 1.017,
+      "candidates_per_sec": 982.828,
+      "estimated_100k_hours_sequential": 0.03,
+      "estimated_100k_hours_n_jobs_2": 0.01,
+      "estimated_100k_hours_n_jobs_4": 0.01
+    }
+  ]
+}

@@ -93,12 +93,24 @@ def build_features(
         start = chunk_index * chunk_size
         end = min(start + chunk_size, total)
         chunk_profiles = candidates[start:end]
+        chunk_start = time.perf_counter()
+        print(
+            f"[features] starting chunk {chunk_index} "
+            f"({start + 1}-{end} of {total}, n_jobs={workers})...",
+            flush=True,
+        )
 
         rows = Parallel(n_jobs=workers, backend="loky", max_nbytes=None)(
             delayed(_process_profile)(profile) for profile in chunk_profiles
         )
         chunk_frame = pd.DataFrame(rows)
         atomic_write_parquet(_chunk_path(out_path, chunk_index), chunk_frame)
+        print(
+            f"[features] finished chunk {chunk_index} in "
+            f"{time.perf_counter() - chunk_start:.1f}s "
+            f"({len(chunk_frame)} rows)",
+            flush=True,
+        )
 
         completed.add(chunk_index)
         manifest = {

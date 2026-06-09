@@ -1,11 +1,7 @@
 from __future__ import annotations
 
-import json
-from pathlib import Path
-
+from src.ontology.loader import load_ontology_json
 from src.understanding.models import CandidateProfile
-
-ONTOLOGY_DIR = Path(__file__).resolve().parent.parent / "ontology"
 
 PRODUCT_SIZES = frozenset({"1-10", "11-50", "51-200", "201-500"})
 STARTUP_SIZES = frozenset({"1-10", "11-50"})
@@ -39,10 +35,6 @@ RETRIEVAL_TAXONOMY_TERMS = frozenset(
 )
 
 
-def _load_json(name: str) -> dict:
-    return json.loads((ONTOLOGY_DIR / name).read_text(encoding="utf-8"))
-
-
 def _role_years(role: dict) -> float:
     return float(role.get("duration_months") or 0) / 12.0
 
@@ -70,9 +62,9 @@ def _skill_in_terms(skill_name: str, terms: frozenset[str]) -> bool:
 
 
 def enrich_experience(profile: CandidateProfile) -> None:
-    patterns = _load_json("responsibility_patterns.json")
-    taxonomy = _load_json("skills_taxonomy.json")
-    company_types = _load_json("company_types.json")
+    patterns = load_ontology_json("responsibility_patterns.json")
+    taxonomy = load_ontology_json("skills_taxonomy.json")
+    company_types = load_ontology_json("company_types.json")
     consulting = company_types.get("consulting", [])
 
     ranking_patterns = patterns.get("ranking_evidence", [])

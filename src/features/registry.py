@@ -23,6 +23,7 @@ from src.understanding.models import CandidateProfile
 JOB_REQUIREMENTS_PATH = (
     Path(__file__).resolve().parents[2] / "config" / "job_requirements.yaml"
 )
+_JOB_REQUIREMENTS = load_job_requirements(JOB_REQUIREMENTS_PATH)
 
 COMPUTERS = [
     experience_features.compute,
@@ -39,8 +40,7 @@ COMPUTERS = [
 
 
 def _attach_evidence_graph(profile: CandidateProfile) -> None:
-    job_requirements = load_job_requirements(JOB_REQUIREMENTS_PATH)
-    score_graph(build_evidence_graph(profile, job_requirements))
+    score_graph(build_evidence_graph(profile, _JOB_REQUIREMENTS))
 
 
 def compute_all_features(profile: CandidateProfile) -> dict[str, float]:

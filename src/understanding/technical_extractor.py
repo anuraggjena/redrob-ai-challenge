@@ -1,12 +1,9 @@
 from __future__ import annotations
 
-import json
 import math
-from pathlib import Path
 
+from src.ontology.loader import load_ontology_json
 from src.understanding.models import CandidateProfile
-
-ONTOLOGY_DIR = Path(__file__).resolve().parent.parent / "ontology"
 
 PROFICIENCY_WEIGHTS = {
     "beginner": 0.25,
@@ -14,10 +11,6 @@ PROFICIENCY_WEIGHTS = {
     "advanced": 0.75,
     "expert": 1.0,
 }
-
-
-def _load_json(name: str) -> dict:
-    return json.loads((ONTOLOGY_DIR / name).read_text(encoding="utf-8"))
 
 
 def _skill_matches_term(skill_name: str, term: str) -> bool:
@@ -44,8 +37,8 @@ def _is_non_technical_title(title: str, non_technical_titles: list[str]) -> bool
 
 
 def enrich_technical(profile: CandidateProfile) -> None:
-    taxonomy = _load_json("skills_taxonomy.json")
-    title_classifier = _load_json("title_classifier.json")
+    taxonomy = load_ontology_json("skills_taxonomy.json")
+    title_classifier = load_ontology_json("title_classifier.json")
 
     retrieval_ranking_terms = taxonomy.get("retrieval_ranking", [])
     embeddings_nlp_terms = taxonomy.get("embeddings_nlp", [])
