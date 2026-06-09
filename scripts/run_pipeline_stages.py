@@ -79,7 +79,9 @@ def main() -> None:
             }
         )
 
-    if not args.skip_embeddings and not (art / "embeddings.npy").exists():
+    embeddings_done = (art / "embeddings.npy").exists()
+    embeddings_manifest = art / "checkpoints" / "embeddings" / "manifest.json"
+    if not args.skip_embeddings and not embeddings_done:
         report.append(
             _run_stage(
                 "build_embeddings",
@@ -87,8 +89,10 @@ def main() -> None:
                 [art / "embeddings.npy", art / "candidate_ids.json"],
             )
         )
-    elif (art / "embeddings.npy").exists():
-        print("\n>>> Skipping build_embeddings (artifacts already exist)")
+    elif embeddings_done:
+        print("\n>>> Skipping build_embeddings (embeddings.npy already exists)")
+    elif embeddings_manifest.exists():
+        print("\n>>> Resuming build_embeddings from checkpoint manifest")
 
     if not (art / "faiss.index").exists():
         report.append(
