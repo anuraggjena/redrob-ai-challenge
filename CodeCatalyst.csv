@@ -1,101 +1,101 @@
 candidate_id,rank,score,reasoning
-CAND_0033179,1,1.0000,Strong fit as AI Research Engineer with 6.9 yrs experience; excels in recruiter response rate and open to work.
-CAND_0010603,2,0.9920,Strong fit as ML Engineer with 5.3 yrs experience; excels in recruiter response rate and open to work.
-CAND_0054173,3,0.9840,Strong fit as Computer Vision Engineer with 5.1 yrs experience; excels in recruiter response rate and open to work.
-CAND_0023215,4,0.9760,Strong fit as Junior ML Engineer with 4.4 yrs experience; excels in recruiter response rate and open to work.
-CAND_0070525,5,0.9680,Strong fit as Senior Software Engineer (ML) with 5.4 yrs experience; excels in recruiter response rate and open to work.
-CAND_0092255,6,0.9600,Strong fit as ML Engineer with 5.2 yrs experience; excels in recruiter response rate and open to work.
-CAND_0077956,7,0.9520,Strong fit as Computer Vision Engineer with 6.4 yrs experience; excels in recruiter response rate and open to work. Notice period 120 days.
-CAND_0060715,8,0.9440,Strong fit as ML Engineer with 3.3 yrs experience; excels in recruiter response rate and open to work. Notice period 120 days.
-CAND_0073883,9,0.9360,Strong fit as AI Specialist with 5.3 yrs experience; excels in recruiter response rate and open to work.
-CAND_0007596,10,0.9280,Strong fit as Junior ML Engineer with 4.4 yrs experience; excels in recruiter response rate and open to work.
-CAND_0061244,11,0.9200,Solid Computer Vision Engineer candidate (6.2 yrs) with open to work and Qdrant strengths. Low recruiter response rate (28%).
-CAND_0005509,12,0.9120,Solid Data Scientist candidate (6.0 yrs) with recruiter response rate and open to work strengths.
-CAND_0065805,13,0.9040,Solid Data Scientist candidate (6.3 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
-CAND_0064259,14,0.8960,Solid Data Engineer candidate (7.5 yrs) with recruiter response rate and open to work strengths.
-CAND_0074345,15,0.8880,Solid Analytics Engineer candidate (6.0 yrs) with recruiter response rate and open to work strengths.
-CAND_0079610,16,0.8800,Solid Data Analyst candidate (6.8 yrs) with recruiter response rate and open to work strengths.
-CAND_0021349,17,0.8720,Solid Data Analyst candidate (7.8 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
-CAND_0073982,18,0.8640,Solid Data Scientist candidate (7.0 yrs) with recruiter response rate and open to work strengths.
-CAND_0068932,19,0.8560,Solid ML Engineer candidate (5.2 yrs) with recruiter response rate and open to work strengths.
-CAND_0098454,20,0.8480,Solid AI Specialist candidate (6.6 yrs) with recruiter response rate and open to work strengths.
-CAND_0066179,21,0.8400,Solid Senior Software Engineer candidate (4.2 yrs) with recruiter response rate and open to work strengths.
-CAND_0024202,22,0.8320,Solid Analytics Engineer candidate (6.2 yrs) with open to work and Qdrant strengths. Low recruiter response rate (27%).
-CAND_0026411,23,0.8240,Solid Software Engineer candidate (6.2 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
-CAND_0072817,24,0.8160,Solid Analytics Engineer candidate (7.2 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
-CAND_0091580,25,0.8080,Solid Data Scientist candidate (5.5 yrs) with open to work and FAISS strengths. Low recruiter response rate (25%).
-CAND_0000082,26,0.8000,Solid Data Analyst candidate (7.4 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
-CAND_0061402,27,0.7920,Solid Senior Software Engineer candidate (6.0 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
-CAND_0072232,28,0.7840,Solid ML Engineer candidate (4.0 yrs) with recruiter response rate and open to work strengths.
-CAND_0061118,29,0.7760,Solid Software Engineer candidate (4.6 yrs) with open to work and BentoML strengths. Low recruiter response rate (19%).
-CAND_0066623,30,0.7680,Solid Senior Data Engineer candidate (6.3 yrs) with recruiter response rate and open to work strengths.
-CAND_0091890,31,0.7600,Solid AI Research Engineer candidate (4.7 yrs) with recruiter response rate and open to work strengths.
-CAND_0004628,32,0.7520,Solid AI Research Engineer candidate (3.3 yrs) with recruiter response rate and open to work strengths.
-CAND_0093883,33,0.7440,Solid AI Research Engineer candidate (5.0 yrs) with recruiter response rate and open to work strengths.
-CAND_0029439,34,0.7360,Solid AI Specialist candidate (6.4 yrs) with recruiter response rate and open to work strengths.
-CAND_0063585,35,0.7280,Solid AI Research Engineer candidate (3.1 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
-CAND_0092989,36,0.7200,Solid Data Scientist candidate (6.1 yrs) with recruiter response rate and open to work strengths.
-CAND_0007761,37,0.7120,Solid Full Stack Developer candidate (9.6 yrs) with recruiter response rate and open to work strengths.
-CAND_0028228,38,0.7040,Solid Software Engineer candidate (6.0 yrs) with open to work and Semantic Search strengths. Low recruiter response rate (23%).
-CAND_0073314,39,0.6960,Solid Senior Software Engineer (ML) candidate (5.2 yrs) with recruiter response rate and open to work strengths.
-CAND_0008295,40,0.6880,Solid AI Research Engineer candidate (6.5 yrs) with recruiter response rate and open to work strengths.
-CAND_0090700,41,0.6800,Solid Java Developer candidate (2.0 yrs) with recruiter response rate and open to work strengths.
-CAND_0068434,42,0.6720,Solid Backend Engineer candidate (7.5 yrs) with open to work and Elasticsearch strengths. Low recruiter response rate (29%).
-CAND_0092494,43,0.6640,Solid Data Analyst candidate (4.7 yrs) with recruiter response rate and open to work strengths.
-CAND_0070808,44,0.6560,Solid Junior ML Engineer candidate (6.8 yrs) with recruiter response rate and open to work strengths.
-CAND_0070514,45,0.6480,Solid AI Specialist candidate (5.5 yrs) with recruiter response rate and open to work strengths.
-CAND_0065514,46,0.6400,Solid ML Engineer candidate (6.6 yrs) with recruiter response rate and open to work strengths.
-CAND_0000969,47,0.6320,Solid AI Specialist candidate (5.5 yrs) with recruiter response rate and open to work strengths.
-CAND_0021410,48,0.6240,Solid Junior ML Engineer candidate (4.0 yrs) with recruiter response rate and open to work strengths.
-CAND_0091909,49,0.6160,Solid Machine Learning Engineer candidate (6.9 yrs) with recruiter response rate and open to work strengths.
-CAND_0072263,50,0.6080,Solid Senior Software Engineer (ML) candidate (6.7 yrs) with recruiter response rate and open to work strengths.
-CAND_0077498,51,0.6000,Partial fit for Senior Software Engineer (ML) (5.4 yrs); has recruiter response rate but gaps in open to work.
-CAND_0066690,52,0.5920,Partial fit for ML Engineer (4.8 yrs); has recruiter response rate but gaps in open to work.
-CAND_0075574,53,0.5840,Partial fit for Machine Learning Engineer (5.7 yrs); has recruiter response rate but gaps in open to work.
-CAND_0010000,54,0.5760,Partial fit for AI Research Engineer (3.2 yrs); has recruiter response rate but gaps in open to work.
-CAND_0098074,55,0.5680,Partial fit for Backend Engineer (3.8 yrs); has recruiter response rate but gaps in open to work.
-CAND_0096916,56,0.5600,Partial fit for Software Engineer (6.3 yrs); has recruiter response rate but gaps in open to work.
-CAND_0021634,57,0.5520,Partial fit for Analytics Engineer (4.9 yrs); has recruiter response rate but gaps in open to work.
-CAND_0095457,58,0.5440,Partial fit for Data Scientist (4.1 yrs); has recruiter response rate but gaps in open to work.
-CAND_0020257,59,0.5360,Partial fit for .NET Developer (2.2 yrs); has recruiter response rate but gaps in open to work.
-CAND_0002426,60,0.5280,Partial fit for Data Scientist (3.3 yrs); has recruiter response rate but gaps in open to work.
-CAND_0008546,61,0.5200,Partial fit for Data Engineer (2.1 yrs); has recruiter response rate but gaps in open to work.
-CAND_0070333,62,0.5120,Partial fit for AI Research Engineer (4.7 yrs); has recruiter response rate but gaps in open to work.
-CAND_0001405,63,0.5040,Partial fit for Data Scientist (3.5 yrs); has recruiter response rate but gaps in open to work.
-CAND_0007008,64,0.4960,Partial fit for Senior Software Engineer (ML) (3.7 yrs); has recruiter response rate but gaps in open to work.
-CAND_0053527,65,0.4880,Partial fit for Junior ML Engineer (7.0 yrs); has recruiter response rate but gaps in open to work.
-CAND_0002120,66,0.4800,Partial fit for ML Engineer (6.5 yrs); has recruiter response rate but gaps in open to work.
-CAND_0025882,67,0.4720,Partial fit for Senior Software Engineer (ML) (5.6 yrs); has recruiter response rate but gaps in open to work.
-CAND_0096142,68,0.4640,Partial fit for Applied ML Engineer (5.0 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
-CAND_0073007,69,0.4560,Partial fit for AI Specialist (5.8 yrs); has recruiter response rate but gaps in open to work.
-CAND_0016267,70,0.4480,Partial fit for AI Specialist (3.6 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
-CAND_0026640,71,0.4400,Partial fit for Computer Vision Engineer (6.1 yrs); has recruiter response rate but gaps in open to work.
-CAND_0032532,72,0.4320,Partial fit for Analytics Engineer (6.7 yrs); has open to work but gaps in RAG. Low recruiter response rate (29%).
-CAND_0025640,73,0.4240,Partial fit for AI Research Engineer (5.6 yrs); has recruiter response rate but gaps in open to work.
-CAND_0088237,74,0.4160,Partial fit for Computer Vision Engineer (3.7 yrs); has recruiter response rate but gaps in open to work.
-CAND_0032955,75,0.4080,Partial fit for Computer Vision Engineer (5.2 yrs); has open to work but gaps in Fine-tuning LLMs. Low recruiter response rate (26%).
-CAND_0064326,76,0.4000,Partial fit for Search Engineer (7.6 yrs); has recruiter response rate but gaps in open to work.
-CAND_0090419,77,0.3920,Partial fit for AI Specialist (3.8 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
-CAND_0053422,78,0.3840,Partial fit for Data Scientist (6.8 yrs); has recruiter response rate but gaps in open to work.
-CAND_0043860,79,0.3760,Partial fit for Junior ML Engineer (6.1 yrs); has recruiter response rate but gaps in open to work.
-CAND_0017093,80,0.3680,Partial fit for ML Engineer (5.9 yrs); has recruiter response rate but gaps in open to work.
-CAND_0073204,81,0.3600,Partial fit for Senior Software Engineer (ML) (3.4 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
-CAND_0080344,82,0.3520,Partial fit for Senior Software Engineer (ML) (4.9 yrs); has recruiter response rate but gaps in open to work.
-CAND_0035879,83,0.3440,Partial fit for AI Research Engineer (4.5 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
-CAND_0097209,84,0.3360,Partial fit for DevOps Engineer (4.9 yrs); has open to work but gaps in Information Retrieval. Low recruiter response rate (19%).
-CAND_0036520,85,0.3280,Partial fit for Data Scientist (4.2 yrs); has recruiter response rate but gaps in open to work.
-CAND_0023076,86,0.3200,Partial fit for AI Research Engineer (3.7 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
-CAND_0055960,87,0.3120,Partial fit for AI Specialist (4.9 yrs); has recruiter response rate but gaps in open to work.
-CAND_0077337,88,0.3040,Partial fit for Staff Machine Learning Engineer (7.0 yrs); has recruiter response rate but gaps in open to work.
-CAND_0035764,89,0.2960,Partial fit for Senior Software Engineer (ML) (6.8 yrs); has recruiter response rate but gaps in open to work.
-CAND_0011327,90,0.2880,Partial fit for AI Research Engineer (6.3 yrs); has recruiter response rate but gaps in open to work.
-CAND_0040677,91,0.2800,Partial fit for AI Research Engineer (4.2 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
-CAND_0059422,92,0.2720,Partial fit for Senior Data Engineer (7.7 yrs); has open to work but gaps in BentoML. Low recruiter response rate (26%).
-CAND_0054546,93,0.2640,Partial fit for AI Research Engineer (4.9 yrs); has recruiter response rate but gaps in open to work.
-CAND_0005538,94,0.2560,Partial fit for Senior AI Engineer (5.9 yrs); has recruiter response rate but gaps in open to work.
-CAND_0076163,95,0.2480,Partial fit for NLP Engineer (6.9 yrs); has recruiter response rate but gaps in open to work.
-CAND_0055139,96,0.2400,Partial fit for ML Engineer (6.9 yrs); has open to work but gaps in Elasticsearch. Notice period 120 days.
-CAND_0014440,97,0.2320,Partial fit for Recommendation Systems Engineer (6.4 yrs); has recruiter response rate but gaps in open to work.
-CAND_0040903,98,0.2240,Partial fit for Senior Software Engineer (5.8 yrs); has open to work but gaps in FAISS. Low recruiter response rate (22%).
-CAND_0089211,99,0.2160,Partial fit for AI Specialist (4.4 yrs); has recruiter response rate but gaps in open to work.
-CAND_0018450,100,0.2080,Partial fit for Data Analyst (3.4 yrs); has recruiter response rate but gaps in open to work.
+CAND_0033179,1,1.0,Strong fit as AI Research Engineer with 6.9 yrs experience; excels in recruiter response rate and open to work.
+CAND_0010603,2,0.992,Strong fit as ML Engineer with 5.3 yrs experience; excels in recruiter response rate and open to work.
+CAND_0054173,3,0.984,Strong fit as Computer Vision Engineer with 5.1 yrs experience; excels in recruiter response rate and open to work.
+CAND_0023215,4,0.976,Strong fit as Junior ML Engineer with 4.4 yrs experience; excels in recruiter response rate and open to work.
+CAND_0070525,5,0.968,Strong fit as Senior Software Engineer (ML) with 5.4 yrs experience; excels in recruiter response rate and open to work.
+CAND_0092255,6,0.96,Strong fit as ML Engineer with 5.2 yrs experience; excels in recruiter response rate and open to work.
+CAND_0077956,7,0.952,Strong fit as Computer Vision Engineer with 6.4 yrs experience; excels in recruiter response rate and open to work. Notice period 120 days.
+CAND_0060715,8,0.944,Strong fit as ML Engineer with 3.3 yrs experience; excels in recruiter response rate and open to work. Notice period 120 days.
+CAND_0073883,9,0.936,Strong fit as AI Specialist with 5.3 yrs experience; excels in recruiter response rate and open to work.
+CAND_0007596,10,0.928,Strong fit as Junior ML Engineer with 4.4 yrs experience; excels in recruiter response rate and open to work.
+CAND_0061244,11,0.92,Solid Computer Vision Engineer candidate (6.2 yrs) with open to work and Qdrant strengths. Low recruiter response rate (28%).
+CAND_0005509,12,0.912,Solid Data Scientist candidate (6.0 yrs) with recruiter response rate and open to work strengths.
+CAND_0065805,13,0.904,Solid Data Scientist candidate (6.3 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
+CAND_0064259,14,0.896,Solid Data Engineer candidate (7.5 yrs) with recruiter response rate and open to work strengths.
+CAND_0074345,15,0.888,Solid Analytics Engineer candidate (6.0 yrs) with recruiter response rate and open to work strengths.
+CAND_0079610,16,0.88,Solid Data Analyst candidate (6.8 yrs) with recruiter response rate and open to work strengths.
+CAND_0021349,17,0.872,Solid Data Analyst candidate (7.8 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
+CAND_0073982,18,0.864,Solid Data Scientist candidate (7.0 yrs) with recruiter response rate and open to work strengths.
+CAND_0068932,19,0.856,Solid ML Engineer candidate (5.2 yrs) with recruiter response rate and open to work strengths.
+CAND_0098454,20,0.848,Solid AI Specialist candidate (6.6 yrs) with recruiter response rate and open to work strengths.
+CAND_0066179,21,0.84,Solid Senior Software Engineer candidate (4.2 yrs) with recruiter response rate and open to work strengths.
+CAND_0024202,22,0.832,Solid Analytics Engineer candidate (6.2 yrs) with open to work and Qdrant strengths. Low recruiter response rate (27%).
+CAND_0026411,23,0.824,Solid Software Engineer candidate (6.2 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
+CAND_0072817,24,0.816,Solid Analytics Engineer candidate (7.2 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
+CAND_0091580,25,0.808,Solid Data Scientist candidate (5.5 yrs) with open to work and FAISS strengths. Low recruiter response rate (25%).
+CAND_0000082,26,0.8,Solid Data Analyst candidate (7.4 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
+CAND_0061402,27,0.792,Solid Senior Software Engineer candidate (6.0 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
+CAND_0072232,28,0.784,Solid ML Engineer candidate (4.0 yrs) with recruiter response rate and open to work strengths.
+CAND_0061118,29,0.776,Solid Software Engineer candidate (4.6 yrs) with open to work and BentoML strengths. Low recruiter response rate (19%).
+CAND_0066623,30,0.768,Solid Senior Data Engineer candidate (6.3 yrs) with recruiter response rate and open to work strengths.
+CAND_0091890,31,0.76,Solid AI Research Engineer candidate (4.7 yrs) with recruiter response rate and open to work strengths.
+CAND_0004628,32,0.752,Solid AI Research Engineer candidate (3.3 yrs) with recruiter response rate and open to work strengths.
+CAND_0093883,33,0.744,Solid AI Research Engineer candidate (5.0 yrs) with recruiter response rate and open to work strengths.
+CAND_0029439,34,0.736,Solid AI Specialist candidate (6.4 yrs) with recruiter response rate and open to work strengths.
+CAND_0063585,35,0.728,Solid AI Research Engineer candidate (3.1 yrs) with recruiter response rate and open to work strengths. Notice period 120 days.
+CAND_0092989,36,0.72,Solid Data Scientist candidate (6.1 yrs) with recruiter response rate and open to work strengths.
+CAND_0007761,37,0.712,Solid Full Stack Developer candidate (9.6 yrs) with recruiter response rate and open to work strengths.
+CAND_0028228,38,0.704,Solid Software Engineer candidate (6.0 yrs) with open to work and Semantic Search strengths. Low recruiter response rate (23%).
+CAND_0073314,39,0.696,Solid Senior Software Engineer (ML) candidate (5.2 yrs) with recruiter response rate and open to work strengths.
+CAND_0008295,40,0.688,Solid AI Research Engineer candidate (6.5 yrs) with recruiter response rate and open to work strengths.
+CAND_0090700,41,0.68,Solid Java Developer candidate (2.0 yrs) with recruiter response rate and open to work strengths.
+CAND_0068434,42,0.672,Solid Backend Engineer candidate (7.5 yrs) with open to work and Elasticsearch strengths. Low recruiter response rate (29%).
+CAND_0092494,43,0.664,Solid Data Analyst candidate (4.7 yrs) with recruiter response rate and open to work strengths.
+CAND_0070808,44,0.656,Solid Junior ML Engineer candidate (6.8 yrs) with recruiter response rate and open to work strengths.
+CAND_0070514,45,0.648,Solid AI Specialist candidate (5.5 yrs) with recruiter response rate and open to work strengths.
+CAND_0065514,46,0.64,Solid ML Engineer candidate (6.6 yrs) with recruiter response rate and open to work strengths.
+CAND_0000969,47,0.632,Solid AI Specialist candidate (5.5 yrs) with recruiter response rate and open to work strengths.
+CAND_0021410,48,0.624,Solid Junior ML Engineer candidate (4.0 yrs) with recruiter response rate and open to work strengths.
+CAND_0091909,49,0.616,Solid Machine Learning Engineer candidate (6.9 yrs) with recruiter response rate and open to work strengths.
+CAND_0072263,50,0.608,Solid Senior Software Engineer (ML) candidate (6.7 yrs) with recruiter response rate and open to work strengths.
+CAND_0077498,51,0.6,Partial fit for Senior Software Engineer (ML) (5.4 yrs); has recruiter response rate but gaps in open to work.
+CAND_0066690,52,0.592,Partial fit for ML Engineer (4.8 yrs); has recruiter response rate but gaps in open to work.
+CAND_0075574,53,0.584,Partial fit for Machine Learning Engineer (5.7 yrs); has recruiter response rate but gaps in open to work.
+CAND_0010000,54,0.576,Partial fit for AI Research Engineer (3.2 yrs); has recruiter response rate but gaps in open to work.
+CAND_0098074,55,0.568,Partial fit for Backend Engineer (3.8 yrs); has recruiter response rate but gaps in open to work.
+CAND_0096916,56,0.56,Partial fit for Software Engineer (6.3 yrs); has recruiter response rate but gaps in open to work.
+CAND_0021634,57,0.552,Partial fit for Analytics Engineer (4.9 yrs); has recruiter response rate but gaps in open to work.
+CAND_0095457,58,0.544,Partial fit for Data Scientist (4.1 yrs); has recruiter response rate but gaps in open to work.
+CAND_0020257,59,0.536,Partial fit for .NET Developer (2.2 yrs); has recruiter response rate but gaps in open to work.
+CAND_0002426,60,0.528,Partial fit for Data Scientist (3.3 yrs); has recruiter response rate but gaps in open to work.
+CAND_0008546,61,0.52,Partial fit for Data Engineer (2.1 yrs); has recruiter response rate but gaps in open to work.
+CAND_0070333,62,0.512,Partial fit for AI Research Engineer (4.7 yrs); has recruiter response rate but gaps in open to work.
+CAND_0001405,63,0.504,Partial fit for Data Scientist (3.5 yrs); has recruiter response rate but gaps in open to work.
+CAND_0007008,64,0.496,Partial fit for Senior Software Engineer (ML) (3.7 yrs); has recruiter response rate but gaps in open to work.
+CAND_0053527,65,0.488,Partial fit for Junior ML Engineer (7.0 yrs); has recruiter response rate but gaps in open to work.
+CAND_0002120,66,0.48,Partial fit for ML Engineer (6.5 yrs); has recruiter response rate but gaps in open to work.
+CAND_0025882,67,0.472,Partial fit for Senior Software Engineer (ML) (5.6 yrs); has recruiter response rate but gaps in open to work.
+CAND_0096142,68,0.464,Partial fit for Applied ML Engineer (5.0 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
+CAND_0073007,69,0.456,Partial fit for AI Specialist (5.8 yrs); has recruiter response rate but gaps in open to work.
+CAND_0016267,70,0.448,Partial fit for AI Specialist (3.6 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
+CAND_0026640,71,0.44,Partial fit for Computer Vision Engineer (6.1 yrs); has recruiter response rate but gaps in open to work.
+CAND_0032532,72,0.432,Partial fit for Analytics Engineer (6.7 yrs); has open to work but gaps in RAG. Low recruiter response rate (29%).
+CAND_0025640,73,0.424,Partial fit for AI Research Engineer (5.6 yrs); has recruiter response rate but gaps in open to work.
+CAND_0088237,74,0.416,Partial fit for Computer Vision Engineer (3.7 yrs); has recruiter response rate but gaps in open to work.
+CAND_0032955,75,0.408,Partial fit for Computer Vision Engineer (5.2 yrs); has open to work but gaps in Fine-tuning LLMs. Low recruiter response rate (26%).
+CAND_0064326,76,0.4,Partial fit for Search Engineer (7.6 yrs); has recruiter response rate but gaps in open to work.
+CAND_0090419,77,0.392,Partial fit for AI Specialist (3.8 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
+CAND_0053422,78,0.384,Partial fit for Data Scientist (6.8 yrs); has recruiter response rate but gaps in open to work.
+CAND_0043860,79,0.376,Partial fit for Junior ML Engineer (6.1 yrs); has recruiter response rate but gaps in open to work.
+CAND_0017093,80,0.368,Partial fit for ML Engineer (5.9 yrs); has recruiter response rate but gaps in open to work.
+CAND_0073204,81,0.36,Partial fit for Senior Software Engineer (ML) (3.4 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
+CAND_0080344,82,0.352,Partial fit for Senior Software Engineer (ML) (4.9 yrs); has recruiter response rate but gaps in open to work.
+CAND_0035879,83,0.344,Partial fit for AI Research Engineer (4.5 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
+CAND_0097209,84,0.336,Partial fit for DevOps Engineer (4.9 yrs); has open to work but gaps in Information Retrieval. Low recruiter response rate (19%).
+CAND_0036520,85,0.328,Partial fit for Data Scientist (4.2 yrs); has recruiter response rate but gaps in open to work.
+CAND_0023076,86,0.32,Partial fit for AI Research Engineer (3.7 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
+CAND_0055960,87,0.312,Partial fit for AI Specialist (4.9 yrs); has recruiter response rate but gaps in open to work.
+CAND_0077337,88,0.304,Partial fit for Staff Machine Learning Engineer (7.0 yrs); has recruiter response rate but gaps in open to work.
+CAND_0035764,89,0.296,Partial fit for Senior Software Engineer (ML) (6.8 yrs); has recruiter response rate but gaps in open to work.
+CAND_0011327,90,0.288,Partial fit for AI Research Engineer (6.3 yrs); has recruiter response rate but gaps in open to work.
+CAND_0040677,91,0.28,Partial fit for AI Research Engineer (4.2 yrs); has recruiter response rate but gaps in open to work. Notice period 120 days.
+CAND_0059422,92,0.272,Partial fit for Senior Data Engineer (7.7 yrs); has open to work but gaps in BentoML. Low recruiter response rate (26%).
+CAND_0054546,93,0.264,Partial fit for AI Research Engineer (4.9 yrs); has recruiter response rate but gaps in open to work.
+CAND_0005538,94,0.256,Partial fit for Senior AI Engineer (5.9 yrs); has recruiter response rate but gaps in open to work.
+CAND_0076163,95,0.248,Partial fit for NLP Engineer (6.9 yrs); has recruiter response rate but gaps in open to work.
+CAND_0055139,96,0.24,Partial fit for ML Engineer (6.9 yrs); has open to work but gaps in Elasticsearch. Notice period 120 days.
+CAND_0014440,97,0.232,Partial fit for Recommendation Systems Engineer (6.4 yrs); has recruiter response rate but gaps in open to work.
+CAND_0040903,98,0.224,Partial fit for Senior Software Engineer (5.8 yrs); has open to work but gaps in FAISS. Low recruiter response rate (22%).
+CAND_0089211,99,0.216,Partial fit for AI Specialist (4.4 yrs); has recruiter response rate but gaps in open to work.
+CAND_0018450,100,0.208,Partial fit for Data Analyst (3.4 yrs); has recruiter response rate but gaps in open to work.
