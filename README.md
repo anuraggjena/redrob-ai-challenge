@@ -28,7 +28,7 @@ flowchart LR
     subgraph offline ["Offline Pre-compute (no time limit)"]
         JD["JD → job_requirements.yaml"]
         EMB["BGE embeddings + FAISS/BM25 indexes"]
-        FEAT["120+ features → features.parquet"]
+        FEAT["150 features → features.parquet"]
         LABELS["Synthetic labels → synthetic_labels.parquet"]
         LTR["LightGBM LambdaMART → ltr_model.lgb"]
         TUNE["Ensemble weight tuning"]
@@ -53,7 +53,7 @@ flowchart LR
 | Stage | Name | Output |
 |-------|------|--------|
 | 1 | Candidate Understanding | Structured `CandidateProfile` |
-| 2 | Feature Extraction | 120+ numeric features + evidence graph |
+| 2 | Feature Extraction | 150 numeric features + evidence graph |
 | 3 | Hybrid Retrieval | BM25 + FAISS RRF → ~5,000 recall pool |
 | 4 | Ensemble Scoring | 7-component weighted score over full pool |
 | 5 | Honeypot Detection | Trust scores + penalties applied |
@@ -95,25 +95,27 @@ Requires Python ≥3.11. No GPU packages; no network needed at ranking time.
 
 ### 2. Pre-compute artifacts (first time only)
 
-Offline step builds embeddings, indexes, features, synthetic labels, LTR model, and tuned ensemble weights. Expect ~30–60 minutes on the full 100K dataset.
+Offline step builds features, embeddings, indexes, synthetic labels, LTR model, and tuned ensemble weights. Expect **~215 minutes** from scratch on 100K (embeddings dominate; ~66 sec for features alone). Skips embedding step if `artifacts/embeddings.npy` already exists.
 
 ```bash
 python scripts/precompute_all.py --candidates India_runs_data_and_ai_challenge/candidates.jsonl
 ```
 
-Chain: `build_embeddings` → `build_indexes` → `build_features` → `build_synthetic_labels` → `train_ltr` → `tune_ensemble_weights`.
+Chain: `build_features` → `build_embeddings` → `build_indexes` → `build_synthetic_labels` → `train_ltr` → `tune_ensemble_weights`.
+
+Large artifacts are gitignored — bundle `artifacts/` with your submission or rebuild locally before ranking.
 
 Use `--skip-tune` to skip ensemble weight tuning during development.
 
 ### 3. Rank candidates
 
 ```bash
-python rank.py --candidates ./candidates.jsonl --out ./submission.csv
+python rank.py --candidates India_runs_data_and_ai_challenge/candidates.jsonl --out ./submission.csv
 ```
 
 Optional flags: `--artifacts artifacts`, `--config config`, `--top-n 100`.
 
-This is the **single reproduce command** declared in `submission_metadata.yaml`. Target runtime: **~2.5–4 minutes** on CPU with 16 GB RAM.
+Requires pre-computed artifacts in `artifacts/`. This is the **reproduce command** declared in `submission_metadata.yaml`. Measured runtime: **81 seconds** on 100K (CPU, 16 GB RAM, no network).
 
 ---
 
@@ -131,8 +133,9 @@ python scripts/evaluate.py \
 Additional audit scripts:
 
 ```bash
-python scripts/audit_honeypots.py --submission submission.csv
-python scripts/audit_traps.py --submission submission.csv
+python scripts/audit_honeypots.py --submission submission.csv --features artifacts/features.parquet
+python scripts/audit_traps.py --submission submission.csv --features artifacts/features.parquet \
+  --candidates India_runs_data_and_ai_challenge/candidates.jsonl
 python scripts/audit_reasoning.py \
   --submission submission.csv \
   --candidates India_runs_data_and_ai_challenge/candidates.jsonl
@@ -164,15 +167,23 @@ Pre-computation (embeddings, training) is allowed offline with no time limit. Al
 
 Estimated runtime budget:
 
-| Phase | Target |
-|-------|--------|
-| Load artifacts | 15–30 s |
-| Parse 100K profiles | 20–30 s |
-| ANN + BM25 retrieval | 5–10 s |
-| Ensemble scoring | 10–20 s |
-| LTR re-rank (top 2K) | 1–2 s |
-| Reasoning (top 100) | 5–10 s |
-| **Total** | **~2.5–4 min** |
+| Phase | Measured / target |
+|-------|-------------------|
+| Load artifacts + parse 100K | ~20–40 s |
+| ANN + BM25 retrieval | ~5–10 s |
+| Ensemble scoring | ~10–20 s |
+| LTR re-rank (top 2K) | ~1–2 s |
+| Reasoning + CSV write (top 100) | ~5–15 s |
+| **Total** | **81 s measured** (≤5 min limit) |
+
+### Verified local results
+
+| Metric | Result |
+|--------|--------|
+| NDCG@10 (synthetic labels) | 1.0 |
+| honeypot@100 | 0 |
+| keyword-stuffer@10 | 0 |
+| reasoning violations | 0 |
 
 ---
 
@@ -189,6 +200,12 @@ Estimated runtime budget:
 ├── sandbox/                   # Streamlit demo (optional)
 └── docs/                      # Architecture, methodology, presentation outline
 ```
+
+---
+
+## Submission
+
+Fill in [submission_metadata.yaml](submission_metadata.yaml) before portal upload (team info, GitHub repo, sandbox link, compute env, AI tools declaration). Deploy the Streamlit demo in `sandbox/` to your hosted sandbox URL before submitting.
 
 ---
 

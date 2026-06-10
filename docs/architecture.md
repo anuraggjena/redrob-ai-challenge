@@ -1,6 +1,6 @@
 # Architecture — Redrob Ranking Engine
 
-Detailed specifications for the eight-stage candidate ranking pipeline. See the [design spec](../superpowers/specs/2026-06-08-redrob-ranking-engine-design.md) for locked design decisions and memory budget.
+Detailed specifications for the eight-stage candidate ranking pipeline.
 
 ---
 
@@ -14,7 +14,7 @@ flowchart TB
     S1["Stage 1: Candidate Understanding"]
     CP["CandidateProfile"]
     S2["Stage 2: Feature Extraction"]
-    FEAT["120+ features + evidence graph"]
+    FEAT["150 features + evidence graph"]
     S3["Stage 3: Hybrid Retrieval"]
     POOL["~5,000 recall pool"]
     S4["Stage 4: Ensemble Scoring"]
@@ -50,7 +50,7 @@ CandidateProfile
 ├── availability: notice_period_days, relocate, work_mode, activity_recency_days
 ├── trust: honeypot_probability, consistency_score, trustworthiness
 ├── evidence_graph: nodes[], edges[], support_score, contradict_score
-└── features: Dict[str, float]  # 120+ materialized features
+└── features: Dict[str, float]  # 150 materialized features
 ```
 
 ---
@@ -78,7 +78,7 @@ Parses raw candidate JSON into a structured `CandidateProfile` with normalized f
 
 **Location:** `src/features/`, cached in `artifacts/features.parquet`
 
-Computes 120+ numeric features once per candidate. Feature groups:
+Computes 150 numeric features once per candidate (cached in `artifacts/features.parquet`, ~12.8 MB for 100K rows). Feature groups:
 
 | Group | Count | Examples |
 |-------|-------|----------|
@@ -110,7 +110,7 @@ Dense-first hybrid retrieval builds a high-recall pool before expensive scoring.
 - Dense: full JD embedding (BGE-small-en-v1.5, 384-d)
 - BM25: required skills, responsibility phrases, positive/negative signal terms
 
-**Indexes:** Offline-built FAISS HNSW index (~150 MB) + BM25 inverted index (~200 MB).
+**Indexes:** Offline-built FAISS HNSW index (~172 MB) + BM25 inverted index (~373 MB).
 
 **Fusion:** Reciprocal Rank Fusion (k=60) of FAISS top-10K + BM25 top-10K + feature-gated boost for candidates with ranking/retrieval experience evidence.
 
@@ -177,7 +177,7 @@ Penalties are applied in ensemble scoring; high-probability profiles are hard-ga
 
 - **Model:** LightGBM `lambdarank`, objective NDCG@10
 - **Training data:** Synthetic relevance tiers from `scripts/build_synthetic_labels.py`
-- **Protocol:** 80/20 hash split; early stopping on NDCG@10; fall back to ensemble if LTR underperforms
+- **Protocol:** LightGBM query groups (≤10K rows per group for 100K training set); `rank_xendcg` fallback if `lambdarank` fails; fall back to ensemble if model file missing
 - **Inference:** Score top-2K → sort descending → take top-100
 
 No embedding inference or API calls at ranking time — model loaded from disk.
@@ -225,26 +225,27 @@ Output CSV columns: `candidate_id,rank,score,reasoning`
 
 **Script:** `scripts/precompute_all.py`
 
-| Step | Script | Artifact |
-|------|--------|----------|
-| 1 | `build_embeddings.py` | `artifacts/embeddings.npy`, `candidate_ids.json` |
-| 2 | `build_indexes.py` | FAISS HNSW + BM25 indexes |
-| 3 | `build_features.py` | `artifacts/features.parquet` |
-| 4 | `build_synthetic_labels.py` | `artifacts/synthetic_labels.parquet` |
-| 5 | `train_ltr.py` | `artifacts/ltr_model.lgb` |
-| 6 | `tune_ensemble_weights.py` | `config/feature_weights.yaml` |
+| Step | Script | Artifact | Measured time (100K) |
+|------|--------|----------|----------------------|
+| 1 | `build_features.py` | `artifacts/features.parquet` | ~66 s |
+| 2 | `build_embeddings.py` | `artifacts/embeddings.npy`, `candidate_ids.json` | ~212 min (skipped if exists) |
+| 3 | `build_indexes.py` | FAISS HNSW + BM25 + `query_embedding.npy` | ~185 s |
+| 4 | `build_synthetic_labels.py` | `artifacts/synthetic_labels.parquet` | ~10 s |
+| 5 | `train_ltr.py` | `artifacts/ltr_model.lgb` | ~16 s |
+| 6 | `tune_ensemble_weights.py` | `config/feature_weights.yaml` | optional |
 
 ---
 
 ## Memory Budget (16 GB)
 
-| Artifact | Est. Size |
-|----------|-----------|
-| FAISS index (100K × 384d) | ~150 MB |
-| BM25 postings | ~200 MB |
-| Feature matrix (100K × 120 × 4B) | ~48 MB |
+| Artifact | Measured / est. size |
+|----------|----------------------|
+| FAISS index (100K × 384d) | ~172 MB |
+| BM25 postings | ~373 MB |
+| Feature matrix (100K × 150 × 4B) | ~12.8 MB (parquet) |
+| Embeddings (100K × 384d float32) | ~146 MB |
 | CandidateProfile objects | ~2–3 GB |
-| LTR model + overhead | <100 MB |
+| LTR model + overhead | ~1.2 MB |
 | Headroom | ~12 GB |
 
 ---
