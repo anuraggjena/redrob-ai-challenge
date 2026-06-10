@@ -7,9 +7,21 @@ venv/
 data/candidates.jsonl
 India_runs_data_and_ai_challenge/candidates.jsonl
 India_runs_data_and_ai_challenge/_extracted_docs.txt
+# Large offline artifacts (rebuild locally; do not commit)
+artifacts/bm25/
+artifacts/checkpoints/
+artifacts/embeddings.npy
+artifacts/candidate_ids.json
+artifacts/index_meta.json
+artifacts/query_embedding.npy
 artifacts/*.npy
 artifacts/*.index
 artifacts/*.parquet
 artifacts/*.lgb
+artifacts/*.pkl
+final_submission_backup/
+eval/checkpoints/
+eval/*.log
+eval/smoke_features.parquet
 eval/reports/*.json
 *.egg-info/
