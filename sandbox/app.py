@@ -1,75 +1,90 @@
 from __future__ import annotations
 
-import io
 import sys
-import tempfile
-import time
 from pathlib import Path
 
 import pandas as pd
 import streamlit as st
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+SUBMISSION_PATH = PROJECT_ROOT / "submission.csv"
+GITHUB_REPO = "https://github.com/anuraggjena/redrob-ai-challenge"
 
-from src.pipeline.config_loader import load_job_requirements
-from src.pipeline.orchestrator import RankingPipeline
-from src.submission.csv_writer import write_submission
-from src.understanding.parser import load_candidates
+st.set_page_config(layout="wide", page_title="Redrob Candidate Ranker")
+st.title("Redrob Candidate Intelligence & Ranking Engine")
+st.caption("CodeCatalyst — Intelligent Candidate Discovery & Ranking Challenge")
 
-st.set_page_config(layout="wide", page_title="Redrob Candidate Ranker Demo")
+st.markdown(
+    """
+**Sandbox demo:** browse the submitted top-100 ranking. Full 100K reproduction runs locally via `rank.py` (see below).
+"""
+)
 
-SAMPLE_PATH = Path(__file__).resolve().parent / "sample_input.json"
-ARTIFACTS_DIR = PROJECT_ROOT / "artifacts"
-CONFIG_DIR = PROJECT_ROOT / "config"
-TOP_N = 20
+col1, col2, col3, col4 = st.columns(4)
+col1.metric("Candidates ranked", "100")
+col2.metric("Pool size", "100,000")
+col3.metric("Features", "150")
+col4.metric("Runtime (local)", "81 sec")
 
-st.title("Redrob Candidate Ranker Demo")
+if SUBMISSION_PATH.exists():
+    submission = pd.read_csv(SUBMISSION_PATH)
+    st.subheader("Top 100 submission")
+    st.dataframe(submission, use_container_width=True, height=480)
 
-uploaded = st.file_uploader("Upload candidates (JSON or JSONL)", type=["json", "jsonl"])
-use_sample = st.button("Run on sample")
+    st.download_button(
+        label="Download submission.csv",
+        data=SUBMISSION_PATH.read_text(encoding="utf-8"),
+        file_name="submission.csv",
+        mime="text/csv",
+    )
+else:
+    st.warning("`submission.csv` not found in the repo root.")
 
-if "input_bytes" not in st.session_state:
-    st.session_state.input_bytes = None
-    st.session_state.input_suffix = ".json"
+with st.expander("How to reproduce full ranking locally"):
+    st.code(
+        """pip install -r requirements.txt -r requirements-precompute.txt
 
-if use_sample:
-    st.session_state.input_bytes = SAMPLE_PATH.read_bytes()
-    st.session_state.input_suffix = ".json"
-    st.session_state.input_label = str(SAMPLE_PATH.name)
+python scripts/precompute_all.py \\
+  --candidates India_runs_data_and_ai_challenge/candidates.jsonl
 
-if uploaded is not None:
-    st.session_state.input_bytes = uploaded.getvalue()
-    suffix = Path(uploaded.name).suffix.lower()
-    st.session_state.input_suffix = suffix if suffix in {".json", ".jsonl"} else ".json"
-    st.session_state.input_label = uploaded.name
+python rank.py \\
+  --candidates India_runs_data_and_ai_challenge/candidates.jsonl \\
+  --out ./submission.csv""",
+        language="bash",
+    )
+    st.markdown(f"Repository: [{GITHUB_REPO}]({GITHUB_REPO})")
 
-if st.session_state.input_bytes:
-    label = st.session_state.get("input_label", "uploaded file")
-    st.info(f"Ready to rank: {label}")
+artifacts_dir = PROJECT_ROOT / "artifacts"
+features_path = artifacts_dir / "features.parquet"
+if features_dir_ok := features_path.exists():
+    st.divider()
+    st.subheader("Live rank (optional)")
+    st.caption("Only works when pre-computed `artifacts/` are present on this machine.")
 
-rank_clicked = st.button("Rank", type="primary")
+    if str(PROJECT_ROOT) not in sys.path:
+        sys.path.insert(0, str(PROJECT_ROOT))
 
-if rank_clicked:
-    if not st.session_state.input_bytes:
-        st.error("Upload a candidates file or click 'Run on sample' first.")
-    else:
-        with tempfile.NamedTemporaryFile(
-            suffix=st.session_state.input_suffix,
-            delete=False,
-        ) as tmp:
-            tmp.write(st.session_state.input_bytes)
+    uploaded = st.file_uploader("Upload candidates JSON/JSONL", type=["json", "jsonl"])
+    top_n = st.slider("Top N", min_value=5, max_value=100, value=20)
+
+    if st.button("Rank uploaded file", type="primary") and uploaded is not None:
+        import tempfile
+        import time
+
+        from src.pipeline.config_loader import load_job_requirements
+        from src.pipeline.orchestrator import RankingPipeline
+        from src.submission.csv_writer import write_submission
+
+        suffix = Path(uploaded.name).suffix or ".json"
+        with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as tmp:
+            tmp.write(uploaded.getvalue())
             candidates_path = Path(tmp.name)
 
         try:
-            profiles = load_candidates(candidates_path)
-            profiles_by_id = {profile.candidate_id: profile for profile in profiles}
-
-            pipeline = RankingPipeline(ARTIFACTS_DIR, CONFIG_DIR)
+            pipeline = RankingPipeline(artifacts_dir, PROJECT_ROOT / "config")
             start = time.perf_counter()
-            rows, profiles_by_id = pipeline.run(candidates_path, top_n=TOP_N)
-            job_requirements = load_job_requirements(CONFIG_DIR / "job_requirements.yaml")
+            rows, profiles_by_id = pipeline.run(candidates_path, top_n=top_n)
+            job_requirements = load_job_requirements(PROJECT_ROOT / "config" / "job_requirements.yaml")
             write_submission(
                 rows,
                 candidates_path.with_suffix(".ranked.csv"),
@@ -77,57 +92,27 @@ if rank_clicked:
                 job_requirements=job_requirements,
             )
             runtime = time.perf_counter() - start
-
-            features_by_id = pipeline._load_features_from_artifacts(
-                [profile.candidate_id for profile in profiles]
-            )
-
-            display_rows: list[dict] = []
-            for row in sorted(rows, key=lambda r: -r["raw_score"]):
-                candidate_id = row["candidate_id"]
-                profile = profiles_by_id.get(candidate_id)
-                current_title = ""
-                if profile is not None:
-                    current_title = profile.current_title or profile.raw.get("profile", {}).get(
-                        "current_title", ""
-                    )
-
-                entry = {
-                    "rank": len(display_rows) + 1,
-                    "candidate_id": candidate_id,
-                    "current_title": current_title,
-                    "score": row["raw_score"],
-                    "reasoning": "",
-                }
-                honeypot = features_by_id.get(candidate_id, {}).get("honeypot_probability")
-                if honeypot is not None:
-                    entry["honeypot_probability"] = float(honeypot)
-                display_rows.append(entry)
-
-            df = pd.DataFrame(display_rows)
-            column_order = [
-                "rank",
-                "candidate_id",
-                "current_title",
-                "score",
-                "reasoning",
-            ]
-            if "honeypot_probability" in df.columns:
-                column_order.append("honeypot_probability")
-            df = df[column_order]
-
             st.success(f"Ranking complete in {runtime:.2f} seconds")
-            st.dataframe(df, use_container_width=True)
 
-            csv_buffer = io.StringIO()
-            df.to_csv(csv_buffer, index=False)
-            st.download_button(
-                label="Download CSV",
-                data=csv_buffer.getvalue(),
-                file_name="ranked_candidates.csv",
-                mime="text/csv",
+            result = pd.DataFrame(
+                [
+                    {
+                        "rank": i + 1,
+                        "candidate_id": row["candidate_id"],
+                        "score": row["raw_score"],
+                    }
+                    for i, row in enumerate(
+                        sorted(rows, key=lambda r: -r["raw_score"])
+                    )
+                ]
             )
+            st.dataframe(result, use_container_width=True)
         except Exception as exc:
             st.error(f"Ranking failed: {exc}")
         finally:
             candidates_path.unlink(missing_ok=True)
+elif not features_dir_ok:
+    st.info(
+        "Live ranking is disabled here because `artifacts/features.parquet` is not bundled. "
+        "Judges can reproduce results with `rank.py` on GitHub."
+    )

@@ -88,10 +88,10 @@ Coarse ranking uses a hand-tuned 7-component ensemble with hard gates. Fine rank
 ### 1. Install dependencies
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt -r requirements-precompute.txt
 ```
 
-Requires Python ≥3.11. No GPU packages; no network needed at ranking time.
+Requires Python ≥3.11. `requirements-precompute.txt` adds `sentence-transformers` for offline embeddings only. No GPU packages; no network needed at ranking time.
 
 ### 2. Pre-compute artifacts (first time only)
 
@@ -145,6 +145,7 @@ python India_runs_data_and_ai_challenge/validate_submission.py submission.csv
 Run the test suite:
 
 ```bash
+pip install -r requirements-dev.txt
 pytest
 ```
 
@@ -205,7 +206,9 @@ Estimated runtime budget:
 
 ## Submission
 
-Fill in [submission_metadata.yaml](submission_metadata.yaml) before portal upload (team info, GitHub repo, sandbox link, compute env, AI tools declaration). Deploy the Streamlit demo in `sandbox/` to your hosted sandbox URL before submitting.
+Fill in [submission_metadata.yaml](submission_metadata.yaml) before portal upload (team info, GitHub repo, sandbox link, compute env, AI tools declaration).
+
+**Streamlit Cloud (sandbox):** [share.streamlit.io](https://share.streamlit.io) → New app → repo `anuraggjena/redrob-ai-challenge` → main file `sandbox/app.py` → Advanced settings → Requirements file: `sandbox/requirements.txt` → Deploy.
 
 ---
 

@@ -23,9 +23,8 @@ team_members:
 # ============================================================================
 github_repo: "https://github.com/anuraggjena/redrob-ai-challenge"
 
-# Deploy sandbox/app.py (Streamlit) before upload — Dockerfile included in repo.
-# Acceptable hosts: HuggingFace Spaces, Streamlit Cloud, Replit, Colab, Docker, Binder.
-sandbox_link: "https://huggingface.co/spaces/anuraggjena/redrob-ai-challenge"
+# Deploy sandbox/app.py on Streamlit Cloud (see README Submission section).
+sandbox_link: "https://redrob-ai-challenge.streamlit.app"
 
 # Requires offline artifacts in artifacts/ (build once via scripts/precompute_all.py).
 # Ranking step only — measured 81 sec on 100K candidates, CPU, no network.
