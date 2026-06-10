@@ -53,7 +53,14 @@ def train_ltr(
     ]
     x = merged[feature_cols]
     y = merged["label"].astype(float)
-    group = [len(merged)]
+    # LightGBM ranking objectives allow at most 10,000 rows per query group.
+    max_group_size = 10_000
+    group: list[int] = []
+    remaining = len(merged)
+    while remaining > 0:
+        size = min(remaining, max_group_size)
+        group.append(size)
+        remaining -= size
 
     params = _lambdarank_params()
     try:

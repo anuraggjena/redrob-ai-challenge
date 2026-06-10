@@ -1,0 +1,73 @@
+{
+  "status": "COMPLETE",
+  "failure_recovered": {
+    "stage": "train_ltr",
+    "error": "LightGBMError: Number of rows 100000 exceeds upper limit of 10000 for a query",
+    "file": "scripts/train_ltr.py",
+    "line": 61,
+    "fix": "Split training data into query groups of at most 10,000 rows"
+  },
+  "stages": [
+    {
+      "stage": "build_features",
+      "status": "PASS",
+      "elapsed_sec": 65.9,
+      "note": "completed earlier",
+      "artifact_sizes_mb": {"artifacts/features.parquet": 12.84},
+      "resumable": true
+    },
+    {
+      "stage": "build_embeddings",
+      "status": "PASS",
+      "elapsed_sec": 12724.82,
+      "artifact_sizes_mb": {
+        "artifacts/embeddings.npy": 146.48,
+        "artifacts/candidate_ids.json": 1.53
+      },
+      "validation": "100000 rows x 384 dims, candidate IDs aligned",
+      "resumable": true
+    },
+    {
+      "stage": "build_indexes",
+      "status": "PASS",
+      "elapsed_sec": 184.77,
+      "artifact_sizes_mb": {
+        "artifacts/faiss.index": 172.44,
+        "artifacts/bm25": 372.53,
+        "artifacts/query_embedding.npy": 0.0
+      },
+      "resumable": false
+    },
+    {
+      "stage": "build_synthetic_labels",
+      "status": "PASS",
+      "elapsed_sec": 9.95,
+      "artifact_sizes_mb": {"artifacts/synthetic_labels.parquet": 0.67},
+      "validation": "100000 rows",
+      "resumable": false
+    },
+    {
+      "stage": "train_ltr",
+      "status": "PASS",
+      "elapsed_sec": 16.0,
+      "artifact_sizes_mb": {"artifacts/ltr_model.lgb": 1.19},
+      "note": "rerun after group-size fix",
+      "resumable": false
+    },
+    {
+      "stage": "rank",
+      "status": "PASS",
+      "elapsed_sec": 81.1,
+      "artifact_sizes_mb": {"submission.csv": 0.01},
+      "resumable": false
+    }
+  ],
+  "validations": {
+    "validate_submission.py": "PASS",
+    "audit_honeypots": "PASS - no honeypots in top 100",
+    "audit_reasoning": "PASS - no violations",
+    "submission_rows": 100,
+    "ranks_1_to_100": true,
+    "scores_non_increasing": true
+  }
+}

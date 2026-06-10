@@ -14,6 +14,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+import pandas as pd
+
 from src.utils.artifacts import memory_mb
 
 
@@ -23,6 +25,21 @@ def _artifact_size(path: Path) -> float:
     if path.is_file():
         return path.stat().st_size / (1024 * 1024)
     return sum(f.stat().st_size for f in path.rglob("*") if f.is_file()) / (1024 * 1024)
+
+
+def _features_row_count(art: Path) -> int:
+    features_path = art / "features.parquet"
+    if not features_path.exists():
+        return 0
+    return len(pd.read_parquet(features_path, columns=["candidate_id"]))
+
+
+def _labels_valid(art: Path) -> bool:
+    labels_path = art / "synthetic_labels.parquet"
+    expected = _features_row_count(art)
+    if expected == 0 or not labels_path.exists():
+        return False
+    return len(pd.read_parquet(labels_path, columns=["candidate_id"])) == expected
 
 
 def _subprocess_env() -> dict[str, str]:
@@ -114,7 +131,8 @@ def main() -> None:
     else:
         print("\n>>> Skipping build_indexes (artifacts already exist)")
 
-    if not (art / "synthetic_labels.parquet").exists():
+    labels_rebuilt = False
+    if not _labels_valid(art):
         report.append(
             _run_stage(
             "build_synthetic_labels",
@@ -131,10 +149,11 @@ def main() -> None:
                 [art / "synthetic_labels.parquet"],
             )
         )
+        labels_rebuilt = True
     else:
         print("\n>>> Skipping build_synthetic_labels (artifacts already exist)")
 
-    if not (art / "ltr_model.lgb").exists():
+    if not (art / "ltr_model.lgb").exists() or labels_rebuilt:
         report.append(
             _run_stage(
             "train_ltr",
